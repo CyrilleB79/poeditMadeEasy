@@ -20,6 +20,7 @@ from NVDAObjects.IAccessible import sysListView32
 import windowUtils
 import NVDAObjects.IAccessible
 import winUser
+import scriptHandler
 import nvwave
 
 addonHandler.initTranslation()
@@ -28,10 +29,10 @@ doBeep = sharpTone = True
  
 class AppModule(poedit.AppModule):
 
-	def getPoeditObject(self, index):
+	def getPoeditObject(self, index, visible=True):
 		try:
 			obj = NVDAObjects.IAccessible.getNVDAObjectFromEvent(
-				windowUtils.findDescendantWindow(api.getForegroundObject().windowHandle, visible=True,
+				windowUtils.findDescendantWindow(api.getForegroundObject().windowHandle, visible,
 				controlID=index), winUser.OBJID_CLIENT, 0)
 		except LookupError:
 			return None
@@ -39,6 +40,13 @@ class AppModule(poedit.AppModule):
 			return obj.value
 		except:
 			return False
+
+	def checkError(self, sourceText, TransText):
+		parameter = {'{': _("brace"), '}': _("brace"), '[': _("bracket"), ']': _("bracket"), '%s': '%s ', '%d': '%d ', '%u': '%u ', '%g': '%g ', '&': _("ampersand"), chr(13): _("paragraph")}
+		for k in parameter.keys():
+			if sourceText.count(k) != TransText.count(k):
+				return parameter[k]
+		return
 
 	def script_copyOriginalText(self, gesture):
 		gesture.send()
@@ -48,7 +56,7 @@ class AppModule(poedit.AppModule):
 	script_copyOriginalText.__doc__ = _("Reports about the copying act in poedit.")
 
 	def script_deleteTranslation(self, gesture):
-		if self.getPoeditObject(103):
+		if self.getPoeditObject(103) or self.getPoeditObject(-31919) or self.getPoeditObject(-31918):
 			gesture.send()
 			# Translators: The deletion  of  translation pressing control+k in poedit.
 			ui.message(_("translation deleted."))
@@ -66,26 +74,72 @@ class AppModule(poedit.AppModule):
 	script_savePoFile.__doc__ = _("Reports while  saving the po  file.")
 
 	def script_sayOriginalText(self, gesture):
-		# Translators: The announcement  of  the source text on  pressing ctrl+shift+r.
-		text = self.getPoeditObject(101)
-		if text:
-			ui.message(text)
+		# Translators: The announcement of the source text on pressing ctrl+shift+r.
+		text = _("No text.")
+		if self.getPoeditObject(101) and self.getPoeditObject(102):
+			if scriptHandler.getLastScriptRepeatCount()==0:
+				text = _("singular") + ": " + self.getPoeditObject(101)
+			else:
+				text = _("plural") + ": " + self.getPoeditObject(102)
 		else:
-			# Translator: Announcement  if the source text could not be read.
-			ui.message(_("Could not read the source text"))
-	# Translators: The description of an NVDA command for reporting source message in Poedit.
-	script_sayOriginalText.__doc__ = _("Reports the source  message in poedit.")
+			if self.getPoeditObject(101):
+				text = self.getPoeditObject(101)
+		ui.message(text)
+	# Translators: The description of an nvda command for reporting source message in Poedit.
+	script_sayOriginalText.__doc__ = _("Reports the source text in poedit. In case of plural form of messages, pressing twice says the plural form of the source text")
 
 	def script_sayTranslation(self, gesture):
-		# Translators: The announcement  of  the translated text on  pressing ctrl+shift+t.
-		text = self.getPoeditObject(103)
-		if text:
-			ui.message(text)
+		# Translators: The announcement of the translated text on pressing ctrl+shift+t.
+		text = _("No text.")
+		if self.getPoeditObject(103):
+			text = self.getPoeditObject(103)
+		elif self.getPoeditObject(-31919):
+			if scriptHandler.getLastScriptRepeatCount()==0:
+				text = _("singular") + ": " + self.getPoeditObject(-31919)
+			else:
+				text = _("plural") + ": "
+				if self.getPoeditObject(-31918, False):
+					text = text+self.getPoeditObject(-31918, False)
+				else:
+					text = text+_("No text.")
+		elif self.getPoeditObject(-31918):
+			if scriptHandler.getLastScriptRepeatCount()==0:
+				text = _("plural") + ": " + self.getPoeditObject(-31918)
+			else:
+				text = _("singular") + ": "
+				if self.getPoeditObject(-31919, False):
+					text = text+self.getPoeditObject(-31919, False)
+				else:
+					text = text+_("No text.")
+		ui.message(text)
+	# Translators: The description of an nvda command for reporting translation message in Poedit.
+	script_sayTranslation.__doc__ = _("Reports the translated string in poedit. In case of plural form of messages, pressing twice says the another  form of the translated  string")
+
+	def script_reportError(self, gesture):
+		if self.getPoeditObject(101) and self.getPoeditObject(103):
+			caseType =""
+			unequalItem = self.checkError(self.getPoeditObject(101), self.getPoeditObject(103))
+		elif self.getPoeditObject(101) and self.getPoeditObject(-31919):
+			caseType = _("singular")
+			unequalItem = self.checkError(self.getPoeditObject(101), self.getPoeditObject(-31919))
+			if not unequalItem:
+				caseType = _("plural")
+				unequalItem = self.checkError(self.getPoeditObject(102), self.getPoeditObject(-31918, False))
+		elif self.getPoeditObject(102) and self.getPoeditObject(-31918):
+			caseType = _("plural")
+			unequalItem = self.checkError(self.getPoeditObject(102), self.getPoeditObject(-31918))
+			if not unequalItem:
+				caseType = _("singular")
+				unequalItem = self.checkError(self.getPoeditObject(101), self.getPoeditObject(-31919, False))
 		else:
-			# Translators: Report if  No translation   available to read.
 			ui.message(_("No text."))
-	# Translators: The description of an NVDA command for reporting translation message in Poedit.
-	script_sayTranslation.__doc__ = _("Reports the translation  message in poedit.")
+			return
+		if unequalItem:
+			text = _("{caseType} message contains   unequal number of {unequalItem} in source and translation.").format(caseType = caseType, unequalItem = unequalItem)
+		else:
+			text = _("no error.")
+		ui.message(text)
+	script_reportError.__doc__ = _("Describes the cause of error.")
 
 	def script_toggleBeep(self, gesture):
 		global doBeep
@@ -109,46 +163,18 @@ class AppModule(poedit.AppModule):
 	# Translators: An NVDA command for adjusting  a beep  volume.
 	script_setToneLevel.__doc__ = _("sets the beep volume in mild  and sharp level in poedit.")
 
-	def script_reportStatus(self,gesture):
-		ui.message(api.getStatusBarText(api.getStatusBar()))
-		# Translators: An NVDA command for getting  status of translation.
-	script_reportStatus.__doc__ = _("Reports the current status of translation.")
-
-	def script_guessError(self, gesture):
-		if self.getPoeditObject(101) and self.getPoeditObject(103):
-			sourceText = self.getPoeditObject(101)
-			TransText = self.getPoeditObject(103)
-		elif self.getPoeditObject(101) and self.getPoeditObject(-31919):
-			sourceText = self.getPoeditObject(101)
-			TransText = self.getPoeditObject(-31919)
-		elif self.getPoeditObject(102) and self.getPoeditObject(-31918):
-			sourceText = self.getPoeditObject(102)
-			TransText = self.getPoeditObject(-31918)
-		else:
-			ui.message(_("No text."))
-			return
-		parameter = {'{': _("brace"), '}': _("brace"), '[': _("bracket"), ']': _("bracket"), '%s': '%s ', '%d': '%d ', '%u': '%u ', '%g': '%g ', '&': _("ampersand"), chr(13): _("paragraph")}
-		for k in parameter.keys():
-			if sourceText.count(k) != TransText.count(k):
-				ui.message(parameter[k]+": "+_("Unequal  number in source and translation."))
-				return
-		ui.message(_("No error"))
-		return
-	script_guessError.__doc__ = _("Describes the cause of error.")
-
 
 	__gestures = {
 		"kb:control+b": "copyOriginalText",
-		"kb:control+d": "reportStatus",
 		"kb:control+s": "savePoFile",
 		"kb:control+k": "deleteTranslation",
-		"kb:control+shift+d": "reportStatus",
-		"kb:control+shift+e": "guessError",
+		"kb:control+shift+e": "reportError",
 		"kb:control+shift+r": "sayOriginalText",
 		"kb:control+shift+t": "sayTranslation",
 		"kb:control+shift+p": "toggleBeep",
 		"kb:control+shift+v": "setToneLevel",
 	}
+
 
 	def chooseNVDAObjectOverlayClasses(self, obj, clsList):
 		if "SysListView32" in obj.windowClassName and obj.role==controlTypes.ROLE_LISTITEM:
@@ -181,7 +207,7 @@ class PoeditListItem(sysListView32.ListItem):
 			# Finding out    the category of   the   translation.
 			originalText = super(PoeditListItem,self)._getColumnContent(1)
 			#Checking   of the equality in  quantity  of % variables, brackets and paragraph  in source and translation. Unequal means error!
-			parameter = ['{', '}', '[', ']', '%s', '%d', '%u', '%g', '\n']
+			parameter = ['{', '}', '%s', '%d', '%u', '%g', '\n']
 			for i in parameter:
 				if originalText.count(i) != translatedText.count(i):
 					return 4	#Either bold ornot, Error from perspective of translation rule.
@@ -200,9 +226,9 @@ class PoeditListItem(sysListView32.ListItem):
 		focusedMessage = super(PoeditListItem,self).name
 		global doBeep
 		if doBeep:
-			return "* "+focusedMessage if type < 2 else focusedMessage if type ==3 else "** "+focusedMessage
+			return "* "+focusedMessage if type < 3 else focusedMessage if type ==3 else "** "+focusedMessage
 		else:
-			return "** "+focusedMessage if type == 0 else "* " + focusedMessage if type ==1 else "** "+focusedMessage if type ==4 else focusedMessage
+			return "** "+focusedMessage if type < 2 else "* " + focusedMessage if type ==2 else "** "+focusedMessage if type ==4 else focusedMessage
 
 	def event_gainFocus(self):
 		super(sysListView32.ListItem, self).event_gainFocus()

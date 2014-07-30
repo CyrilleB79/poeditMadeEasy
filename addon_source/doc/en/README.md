@@ -68,3 +68,19 @@ Now, you can separately know the text of poedit source and translated messages. 
 
 - Three: Reporting of status.
 - Now, you can know The current status of the translation by pressing control+shift+d.
+
+## changes in 2.0dev ##
+## Addition of new Features ###
+- Now poeditMadeEasy is accessible in plural formed messages.
+- Now,  In plural form messages:
+ - the singular and plural form message of source can be known separately.
+ - In case of plural form; press  control+shift+r  to know the singular  message. Press  twice for plural form.
+ - the singular and plural form message of translation  can be known separately.
+ - In case of plural form; press  control+shift+t  to know the focussed   form of message. Press  twice for next form.
+- Now, While reporting the error of plural formed messages,  press of control+shift+e will  report the  exact message  singular or plural containing the error.
+- Note: There are no plural formed message in main nvda or in its official add-ons! You can find them in wxwidgit, orca, linus or poedit itself.
+  
+### Corrections  ###
+-  since nvda global command (nvda+shift+end) serve the same, Removed the status gesture added in 1.0dev.
+- Fixed the bug that  was indicating  unusual error in some messages.
+  
