@@ -1,11 +1,11 @@
 # poeditMadeEasy #
 - Author: Him Prasad Gautam <drishtibachak@gmail.com>.
-- Download [1.0dev][1]
+- Download [2.0dev][1]
 
 # Introduction #
 This """Add- on makes poedit more accessible and informative in many aspect of the shortcut command of poedit.
 It also indicates the different category of messages by either a beep or a preceded asterisk announcement.
-Now, you can separately know the text of poedit source and translated messages. This will help you to judge the translation accuracy more easily. It avoids the round trip of TAB and shift+TAB if desired to know these messages individually.
+Now, you can separately know the text of poedit source and translated messages. Further more, the plural formed messages (if any)can now be distinctly recognized. This will help you to judge the translation accuracy more easily. It avoids the round trip of TAB and shift+TAB if desired to know these messages individually.
 
 # Features #
 - Announcement of the action taken on pressing poedit shortcut commands.
@@ -83,4 +83,5 @@ Now, you can separately know the text of poedit source and translated messages. 
 ### Corrections  ###
 -  since nvda global command (nvda+shift+end) serve the same, Removed the status gesture added in 1.0dev.
 - Fixed the bug that  was indicating  unusual error in some messages.
+  
   
