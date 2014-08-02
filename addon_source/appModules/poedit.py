@@ -7,7 +7,6 @@
 """App module for accessing  Poedit.
 """
 
-from nvdaBuiltin.appModules import poedit
 import addonHandler
 import api
 import appModuleHandler
@@ -27,26 +26,24 @@ addonHandler.initTranslation()
 
 doBeep = sharpTone = True
  
-class AppModule(poedit.AppModule):
+class AppModule(appModuleHandler.AppModule):
 
-	def getPoeditObject(self, index, visible=True):
+	def getPoeditWindow(self, index, visible=True):
 		try:
 			obj = NVDAObjects.IAccessible.getNVDAObjectFromEvent(
 				windowUtils.findDescendantWindow(api.getForegroundObject().windowHandle, visible,
 				controlID=index), winUser.OBJID_CLIENT, 0)
 		except LookupError:
 			return None
-		try:
-			return obj.value
-		except:
-			return False
+		objText = obj.value
+		return objText if objText else False
 
-	def checkError(self, sourceText, TransText):
-		parameter = {'{': _("brace"), '}': _("brace"), '[': _("bracket"), ']': _("bracket"), '%s': '%s ', '%d': '%d ', '%u': '%u ', '%g': '%g ', '&': _("ampersand"), chr(13): _("paragraph")}
+	def checkError(self, sourceText, transText):
+		parameter = {'{': _("brace"), '}': _("brace"), '[': _("bracket"), ']': _("bracket"), '%s': '%s ', '%d': '%d ', '%u': '%u ', '%g': '%g ', '&': _("ampersand"), '\n': "\n", chr(13): _("paragraph")}
 		for k in parameter.keys():
-			if sourceText.count(k) != TransText.count(k):
+			if sourceText.count(k) != transText.count(k):
 				return parameter[k]
-		return
+		return True if sourceText == transText else None
 
 	def script_copyOriginalText(self, gesture):
 		gesture.send()
@@ -56,7 +53,7 @@ class AppModule(poedit.AppModule):
 	script_copyOriginalText.__doc__ = _("Reports about the copying act in poedit.")
 
 	def script_deleteTranslation(self, gesture):
-		if self.getPoeditObject(103) or self.getPoeditObject(-31919) or self.getPoeditObject(-31918):
+		if self.getPoeditWindow(103) or self.getPoeditWindow(-31919) or self.getPoeditWindow(-31918):
 			gesture.send()
 			# Translators: The deletion  of  translation pressing control+k in poedit.
 			ui.message(_("translation deleted."))
@@ -76,14 +73,14 @@ class AppModule(poedit.AppModule):
 	def script_sayOriginalText(self, gesture):
 		# Translators: The announcement of the source text on pressing ctrl+shift+r.
 		text = _("No text.")
-		if self.getPoeditObject(101) and self.getPoeditObject(102):
+		if self.getPoeditWindow(101) and self.getPoeditWindow(102):
 			if scriptHandler.getLastScriptRepeatCount()==0:
-				text = _("singular") + ": " + self.getPoeditObject(101)
+				text = _("singular") + ": " + self.getPoeditWindow(101)
 			else:
-				text = _("plural") + ": " + self.getPoeditObject(102)
+				text = _("plural") + ": " + self.getPoeditWindow(102)
 		else:
-			if self.getPoeditObject(101):
-				text = self.getPoeditObject(101)
+			if self.getPoeditWindow(101):
+				text = self.getPoeditWindow(101)
 		ui.message(text)
 	# Translators: The description of an nvda command for reporting source message in Poedit.
 	script_sayOriginalText.__doc__ = _("Reports the source text in poedit. In case of plural form of messages, pressing twice says the plural form of the source text")
@@ -91,24 +88,24 @@ class AppModule(poedit.AppModule):
 	def script_sayTranslation(self, gesture):
 		# Translators: The announcement of the translated text on pressing ctrl+shift+t.
 		text = _("No text.")
-		if self.getPoeditObject(103):
-			text = self.getPoeditObject(103)
-		elif self.getPoeditObject(-31919):
+		if self.getPoeditWindow(103):
+			text = self.getPoeditWindow(103)
+		elif self.getPoeditWindow(-31919):
 			if scriptHandler.getLastScriptRepeatCount()==0:
-				text = _("singular") + ": " + self.getPoeditObject(-31919)
+				text = _("singular") + ": " + self.getPoeditWindow(-31919)
 			else:
 				text = _("plural") + ": "
-				if self.getPoeditObject(-31918, False):
-					text = text+self.getPoeditObject(-31918, False)
+				if self.getPoeditWindow(-31918, False):
+					text = text+self.getPoeditWindow(-31918, False)
 				else:
 					text = text+_("No text.")
-		elif self.getPoeditObject(-31918):
+		elif self.getPoeditWindow(-31918):
 			if scriptHandler.getLastScriptRepeatCount()==0:
-				text = _("plural") + ": " + self.getPoeditObject(-31918)
+				text = _("plural") + ": " + self.getPoeditWindow(-31918)
 			else:
 				text = _("singular") + ": "
-				if self.getPoeditObject(-31919, False):
-					text = text+self.getPoeditObject(-31919, False)
+				if self.getPoeditWindow(-31919, False):
+					text = text+self.getPoeditWindow(-31919, False)
 				else:
 					text = text+_("No text.")
 		ui.message(text)
@@ -116,30 +113,67 @@ class AppModule(poedit.AppModule):
 	script_sayTranslation.__doc__ = _("Reports the translated string in poedit. In case of plural form of messages, pressing twice says the another  form of the translated  string")
 
 	def script_reportError(self, gesture):
-		if self.getPoeditObject(101) and self.getPoeditObject(103):
+		if self.getPoeditWindow(101) and self.getPoeditWindow(103):
 			caseType =""
-			unequalItem = self.checkError(self.getPoeditObject(101), self.getPoeditObject(103))
-		elif self.getPoeditObject(101) and self.getPoeditObject(-31919):
+			unequalItem = self.checkError(self.getPoeditWindow(101), self.getPoeditWindow(103))
+		elif self.getPoeditWindow(101) and self.getPoeditWindow(-31919):
 			caseType = _("singular")
-			unequalItem = self.checkError(self.getPoeditObject(101), self.getPoeditObject(-31919))
+			unequalItem = self.checkError(self.getPoeditWindow(101), self.getPoeditWindow(-31919))
 			if not unequalItem:
 				caseType = _("plural")
-				unequalItem = self.checkError(self.getPoeditObject(102), self.getPoeditObject(-31918, False))
-		elif self.getPoeditObject(102) and self.getPoeditObject(-31918):
+				unequalItem = self.checkError(self.getPoeditWindow(102), self.getPoeditWindow(-31918, False))
+		elif self.getPoeditWindow(102) and self.getPoeditWindow(-31918):
 			caseType = _("plural")
-			unequalItem = self.checkError(self.getPoeditObject(102), self.getPoeditObject(-31918))
+			unequalItem = self.checkError(self.getPoeditWindow(102), self.getPoeditWindow(-31918))
 			if not unequalItem:
 				caseType = _("singular")
-				unequalItem = self.checkError(self.getPoeditObject(101), self.getPoeditObject(-31919, False))
+				unequalItem = self.checkError(self.getPoeditWindow(101), self.getPoeditWindow(-31919, False))
 		else:
 			ui.message(_("No text."))
 			return
-		if unequalItem:
+		if unequalItem is True:
+			text = _("Warning! {caseType} message has same  text  in source and translation.").format(caseType = caseType)
+		elif unequalItem:
 			text = _("{caseType} message contains   unequal number of {unequalItem} in source and translation.").format(caseType = caseType, unequalItem = unequalItem)
 		else:
 			text = _("no error.")
 		ui.message(text)
 	script_reportError.__doc__ = _("Describes the cause of error.")
+
+	def script_reportAutoCommentWindow(self,gesture):
+		obj = api.getForegroundObject()
+		try:
+			obj = obj.firstChild.next.next.firstChild
+			i = 1
+			while i<4:
+				obj = obj.firstChild.next.firstChild
+				i += 1
+		except AttributeError:
+			obj = None
+		if obj and obj.windowControlID == 101:
+			try:
+				objText = obj.name + obj.value
+			except:
+				# Translators: reported if     the Note for translator window does not contain any texts.
+				objText = _("No Note for translator.")
+		else:
+			# Translators: reported when  the Note for translator window could not be   found.
+			objText = _("could not find  the Note for translator window.")
+		ui.message(objText)
+	# Translators: The description of an NVDA command for Poedit.
+	script_reportAutoCommentWindow.__doc__ = _("Reports any Note for translator")
+
+	def script_reportCommentWindow(self,gesture):
+		objText = self.getPoeditWindow(104)
+		if objText is False:
+			# Translators: reported when the comment window  does not contain any texts.
+			objText = _("No comment.")
+		elif objText is None:
+			# Translators: reported when the comments window could not be found.
+			objText = _("Could not find comment window.")
+		ui.message(objText)
+	# Translators: The description of an NVDA command for Poedit.
+	script_reportCommentWindow.__doc__ = _("Reports any comments in the comments window")
 
 	def script_toggleBeep(self, gesture):
 		global doBeep
@@ -168,6 +202,8 @@ class AppModule(poedit.AppModule):
 		"kb:control+b": "copyOriginalText",
 		"kb:control+s": "savePoFile",
 		"kb:control+k": "deleteTranslation",
+		"kb:control+shift+a": "reportAutoCommentWindow",
+		"kb:control+shift+c": "reportCommentWindow",
 		"kb:control+shift+e": "reportError",
 		"kb:control+shift+r": "sayOriginalText",
 		"kb:control+shift+t": "sayTranslation",

@@ -1,6 +1,6 @@
 # poeditMadeEasy #
 - Author: Him Prasad Gautam <drishtibachak@gmail.com>.
-- Download [2.0dev][1]
+- Download [3.0dev][1]
 
 # Introduction #
 This """Add- on makes poedit more accessible and informative in many aspect of the shortcut command of poedit.
@@ -83,5 +83,7 @@ Now, you can separately know the text of poedit source and translated messages. 
 ### Corrections  ###
 -  since nvda global command (nvda+shift+end) serve the same, Removed the status gesture added in 1.0dev.
 - Fixed the bug that  was indicating  unusual error in some messages.
-  
-  
+
+## Changes in 3.0dev ##
+- Bug fixing.
+- More clarity in error checking.
