@@ -24,7 +24,7 @@ import scriptHandler
 addonHandler.initTranslation()
 
 doBeep = sharpTone = True
-pluralForm = False
+
 
 def getPoeditWindow(index, visible=True):
 	try:
@@ -251,18 +251,14 @@ class PoeditListItem(sysListView32.ListItem):
 			return False
 
 	def category(self):
-		global pluralForm
 		# category: 0: untranslated, 1: fuzzy, 2: unsure, 3: normal, 4: Errorneous. 
 		if getPoeditWindow(103):
-			pluralForm = False
 			transID = 103
 			sourceID = 101
 		elif getPoeditWindow(-31918):
-			pluralForm = True
 			transID = -31918
 			sourceID = 102
 		elif getPoeditWindow(-31919):
-			pluralForm = True
 			transID = -31919
 			sourceID = 101
 		else:
@@ -284,9 +280,12 @@ class PoeditListItem(sysListView32.ListItem):
 
 	def _get_name(self):
 		type = self.category()
-		global doBeep, pluralForm
-		noticeForm =["", _("Has plural form.")]
-		focusedMessage = super(PoeditListItem,self).name+": "+noticeForm[pluralForm]
+		global doBeep
+		if getPoeditWindow(102):
+			noticeText =_("Has plural form.")
+		else:
+			noticeText =""
+		focusedMessage = super(PoeditListItem,self).name+": "+noticeText
 		if doBeep:
 			return "* "+focusedMessage if type < 3 else focusedMessage if type ==3 else "** "+focusedMessage
 		else:
