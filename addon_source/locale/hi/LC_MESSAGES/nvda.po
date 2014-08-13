@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 'poeditMadeEasy' '2.0dev'\n"
 "Report-Msgid-Bugs-To: 'nvda-translations@freelists.org'\n"
-"POT-Creation-Date: 2014-08-02 18:57+0545\n"
-"PO-Revision-Date: 2014-08-02 18:59+0545\n"
+"POT-Creation-Date: 2014-08-13 07:02+0545\n"
+"PO-Revision-Date: 2014-08-13 07:05+0545\n"
 "Last-Translator: \n"
 "Language-Team: Hindi\n"
 "Language: hi\n"
@@ -18,182 +18,198 @@ msgstr ""
 
 #: addon\appModules\poedit.py:42
 msgid "brace"
-msgstr ""
+msgstr "जल्लेदार कोष्ठक "
 
 #: addon\appModules\poedit.py:42
 msgid "bracket"
-msgstr ""
+msgstr "कोष्ठक "
 
-#: addon\appModules\poedit.py:42
+#: addon\appModules\poedit.py:44
 msgid "ampersand"
-msgstr ""
+msgstr "ऐंपरसैंड "
 
-#: addon\appModules\poedit.py:42
+#: addon\appModules\poedit.py:44
 msgid "paragraph"
-msgstr ""
+msgstr "अनुछेद"
 
-#. Translators: The copying  of  source text to translation pressing control+b in poedit.
-#: addon\appModules\poedit.py:51
+#. Translators: The copying of source text to translation pressing control+b in poedit.
+#: addon\appModules\poedit.py:53
 msgid "copied original text."
-msgstr "मूल पाठ कि नक्कल कर दिया ।"
+msgstr "श्रोत पाठ कि प्रतिलिपि कर दिया ।"
 
 #. Translators: The description of an NVDA command of copying message in Poedit.
-#: addon\appModules\poedit.py:53
+#: addon\appModules\poedit.py:55
 msgid "Reports about the copying act in poedit."
-msgstr "नक्कल बनाने सम्बन्धी कार्यों कि जानकारि देता है ।"
+msgstr "पोऐडिट में मूल पाठ कि प्रतिलिपि क्रीया के बारे में बताएगा."
 
-#. Translators: The deletion  of  translation pressing control+k in poedit.
-#: addon\appModules\poedit.py:59
+#. Translators: The deletion of translation pressing control+k in poedit.
+#: addon\appModules\poedit.py:61
 msgid "translation deleted."
-msgstr "अनुवादको हटाया गया ।"
+msgstr "अनुवाद हटाया गया ।"
 
-#. Translators: Report that No translation  text available to delete.
-#. Translators: The announcement of the source text on pressing ctrl+shift+r.
+#. Translators: Report that No translation text available to delete.
 #. Translators: The announcement of the translated text on pressing ctrl+shift+t.
-#: addon\appModules\poedit.py:62 addon\appModules\poedit.py:75
-#: addon\appModules\poedit.py:90 addon\appModules\poedit.py:101
-#: addon\appModules\poedit.py:110 addon\appModules\poedit.py:132
-#: addon\appModules\poedit.py:284
-msgid "No text."
-msgstr "पाठ नहि है ।"
+#: addon\appModules\poedit.py:64 addon\appModules\poedit.py:95
+#: addon\appModules\poedit.py:109 addon\appModules\poedit.py:118
+#: addon\appModules\poedit.py:140 addon\appModules\poedit.py:308
+msgid "No text in translation."
+msgstr "अनुवाद मे पाठ नहि है"
 
 #. Translators: The description of an NVDA command of deletion in Poedit.
-#: addon\appModules\poedit.py:64
+#: addon\appModules\poedit.py:66
 msgid "Reports about the deletion act in poedit."
-msgstr "अनुवाद कि बनाने सम्बन्धी कार्यों कि जानकारि देता है ।"
+msgstr "पोऐडिट में अनुवाद को हटाने की क्रीया के बारे में बताएगा."
 
-#. Translators: The saving   of  currently focused    po file by   pressing control+s.
-#: addon\appModules\poedit.py:69
-msgid "saving the po file..."
-msgstr "po फाइल बचत हो रहा है..."
-
-#. Translators: The description of an NVDA command of saving  po  file.
+#. Translators: The saving  of currently focused  po file by  pressing control+s.
 #: addon\appModules\poedit.py:71
-msgid "Reports while  saving the po  file."
-msgstr "po फाइल कि बचत होते वख्त इस कि जानकारी देता है  ।"
+msgid "saving the po file..."
+msgstr "po फाइल बचत हो रहि है..."
 
-#: addon\appModules\poedit.py:78 addon\appModules\poedit.py:95
-#: addon\appModules\poedit.py:106 addon\appModules\poedit.py:120
-#: addon\appModules\poedit.py:129
+#. Translators: The description of an NVDA command of saving po file.
+#: addon\appModules\poedit.py:73
+msgid "Reports while saving the po file."
+msgstr "po फाइल कि बचत कार्यों  कि जानकारी देगा."
+
+#. Translators: The announcement of the source text on pressing ctrl+shift+r.
+#: addon\appModules\poedit.py:77
+msgid "No source text."
+msgstr "कोई पाठ नही है."
+
+#: addon\appModules\poedit.py:80 addon\appModules\poedit.py:103
+#: addon\appModules\poedit.py:114 addon\appModules\poedit.py:128
+#: addon\appModules\poedit.py:137
 msgid "singular"
-msgstr ""
+msgstr "एकवचन"
 
-#: addon\appModules\poedit.py:80 addon\appModules\poedit.py:97
-#: addon\appModules\poedit.py:104 addon\appModules\poedit.py:123
-#: addon\appModules\poedit.py:126
+#: addon\appModules\poedit.py:82 addon\appModules\poedit.py:105
+#: addon\appModules\poedit.py:112 addon\appModules\poedit.py:131
+#: addon\appModules\poedit.py:134
 msgid "plural"
-msgstr ""
+msgstr "बहुवचन"
+
+#: addon\appModules\poedit.py:88 addon\appModules\poedit.py:100
+msgid "Has no plural form."
+msgstr "बहुवचनिय रुप नहि है."
 
 #. Translators: The description of an nvda command for reporting source message in Poedit.
-#: addon\appModules\poedit.py:86
+#: addon\appModules\poedit.py:91
 msgid ""
 "Reports the source text in poedit. In case of plural form of messages, "
 "pressing twice says the plural form of the source text"
 msgstr ""
+"पोऐडिट में स्रोत  पाठ बताएगा. अगर केन्द्रीत् सन्देस बहुवचन   रूप कि हो तो, दो बार दबाने "
+"पर स्रोत  पाठ कि बहुवचन रूप बताएगा."
 
 #. Translators: The description of an nvda command for reporting translation message in Poedit.
-#: addon\appModules\poedit.py:113
+#: addon\appModules\poedit.py:121
 msgid ""
 "Reports the translated string in poedit. In case of plural form of messages, "
-"pressing twice says the another  form of the translated  string"
+"pressing twice says the another form of the translated string"
 msgstr ""
+"पोऐडिट में अनुवादित पदावली  बताएगा. अगर केन्द्रीत् सन्देस बहुवचन   रूप कि हो तो, दो बार "
+"दबाने पर अनुवाद पाठ कि दुसरा  रूप बताएगा."
 
-#: addon\appModules\poedit.py:135
-msgid "Warning! {caseType} message has same  text  in source and translation."
-msgstr ""
-
-#: addon\appModules\poedit.py:137
+#: addon\appModules\poedit.py:143
 msgid ""
-"{caseType} message contains   unequal number of {unequalItem} in source and "
+"Warning! {caseType} message contains same text in source and translation."
+msgstr "चेतावनी! {caseType} संदेश में स्रोत  और अनुवाद में एक ही पाठ है."
+
+#: addon\appModules\poedit.py:145
+msgid ""
+"{caseType} message has different  number of {unequalItem} in source and "
 "translation."
-msgstr ""
+msgstr "{caseType} संदेश में स्रोत  और अनुवाद में {unequalItem} कि तादात फरक है."
 
-#: addon\appModules\poedit.py:139
-msgid "no error."
-msgstr ""
+#: addon\appModules\poedit.py:147
+msgid "no syntax error."
+msgstr "कोई त्रुटि नही है."
 
-#: addon\appModules\poedit.py:141
+#: addon\appModules\poedit.py:149
 msgid "Describes the cause of error."
-msgstr ""
+msgstr "त्रुटि कि वजह का वर्णन करेगा."
 
-#. Translators: reported if     the Note for translator window does not contain any texts.
-#: addon\appModules\poedit.py:158
-msgid "No Note for translator."
-msgstr ""
-
-#. Translators: reported when  the Note for translator window could not be   found.
-#: addon\appModules\poedit.py:161
-msgid "could not find  the Note for translator window."
-msgstr ""
-
-#. Translators: The description of an NVDA command for Poedit.
-#: addon\appModules\poedit.py:164
-msgid "Reports any Note for translator"
-msgstr ""
-
-#. Translators: reported when the comment window  does not contain any texts.
-#: addon\appModules\poedit.py:170
-msgid "No comment."
-msgstr ""
-
-#. Translators: reported when the comments window could not be found.
+#. Translators: Reported when there exists no note for translators.
 #: addon\appModules\poedit.py:173
-msgid "Could not find comment window."
-msgstr ""
+msgid "No notes for translators."
+msgstr "अनुवादकों  के लिए कोई द्रष्टव्य नही है."
+
+#. Translators: Reported when  unable to find the 'Notes for translators' window.
+#: addon\appModules\poedit.py:176
+msgid "Could not find Notes for translators window."
+msgstr "अनुवादकों के लिए द्रष्टव्य विंडो नही मिला."
 
 #. Translators: The description of an NVDA command for Poedit.
-#: addon\appModules\poedit.py:176
-msgid "Reports any comments in the comments window"
-msgstr ""
+#: addon\appModules\poedit.py:179
+msgid "Reports any notes for translators"
+msgstr "अनुबादकों के लिए कोई द्रष्टव्य बताएगा"
 
-#: addon\appModules\poedit.py:182
-msgid "Beep off"
-msgstr "आवाज मत दो ।"
-
+#. Translators: Reported when the comment window does not contain any texts.
 #: addon\appModules\poedit.py:185
+msgid "Comment window has no text."
+msgstr "टिप्पणी विन्डोज में पाठ नहि है."
+
+#. Translators: Reported when the comments window could not be found.
+#: addon\appModules\poedit.py:188
+msgid "Could not find comment window."
+msgstr "टिपनी विंडो नही मिला."
+
+#. Translators: The description of an NVDA command for Poedit.
+#: addon\appModules\poedit.py:191
+msgid "Reports any comments in the comments window"
+msgstr "टिपनी विंडो में कोई टिपनी बताएगा"
+
+#: addon\appModules\poedit.py:197
+msgid "Beep off"
+msgstr "भोपू औफ"
+
+#: addon\appModules\poedit.py:200
 msgid "Beep on"
-msgstr "आवाज दो ।"
+msgstr "भोपू औन"
 
-#. Translators: An NVDA command for toggling a beep  in Poedit.
-#: addon\appModules\poedit.py:187
+#. Translators: An NVDA command for toggling a beep in Poedit.
+#: addon\appModules\poedit.py:202
 msgid "Toggles the beep mode and informs."
-msgstr "आवाज देने या नहि देने कि विकल्प कि चयन ।"
+msgstr "भोपू मुद्रा को उलटे और सूचित करे."
 
-#: addon\appModules\poedit.py:193
-msgid "set to  mild tone"
-msgstr "मुलायम आवाज कायम"
+#: addon\appModules\poedit.py:208
+msgid "set to mild tone"
+msgstr "कोमल स्वर में कायम "
 
-#: addon\appModules\poedit.py:196
-msgid "set to high  tone"
-msgstr "कडा आवाज कायम"
+#: addon\appModules\poedit.py:211
+msgid "set to high tone"
+msgstr "उच्च स्वर में कायम"
 
-#. Translators: An NVDA command for adjusting  a beep  volume.
-#: addon\appModules\poedit.py:198
-msgid "sets the beep volume in mild  and sharp level in poedit."
-msgstr "पोइडिट मे मुलायम और कडा आवाजकि चयन करता है ।"
+#. Translators: An NVDA command for adjusting a beep volume.
+#: addon\appModules\poedit.py:213
+msgid "sets the beep volume in mild and sharp level in poedit."
+msgstr "पोऐडिट  में भोपू आवाज़ को कोमल और उच्च स्तर में कायम करे."
 
-#: addon\appModules\poedit.py:284
+#: addon\appModules\poedit.py:288
+msgid "Has plural form."
+msgstr "बहुवचनिय रुप भि है."
+
+#: addon\appModules\poedit.py:308
 msgid "erased Fuzzy label."
-msgstr "विकृत रुप हटायागया ।"
+msgstr "विकृत सूचक मिटाया गया."
 
-#: addon\appModules\poedit.py:284
+#: addon\appModules\poedit.py:308
 msgid "labelled as fuzzy."
-msgstr "विकृत कायम कियागया ।"
+msgstr "विकृत में दर्ज किया गया ।"
 
-#: addon\appModules\poedit.py:284
+#: addon\appModules\poedit.py:308
 msgid "Error in translation"
 msgstr "अनुवाद में त्रुटी"
 
 #. Translators: The description of an NVDA command in toggling Poedit message status.
-#: addon\appModules\poedit.py:289
-msgid "Reports the status  of message set by toggling in poedit."
-msgstr "सन्देसों कि प्रकृती उलट-पुटल करते वख्त यसकि जानकारी देता है ।"
+#: addon\appModules\poedit.py:313
+msgid "Reports the status of message set by toggling in poedit."
+msgstr "पोऐडिट में उलटाने कि आदेस देने पर कायम हुई अनुवाद की स्थिती बताएगा."
 
 #. Add-on summary, usually the user visible name of the addon.
 #. Translators: Summary for this add-on to be shown on installation and add-on information.
 #: buildVars.py:17
 msgid "Enhancement on poedit Access."
-msgstr "समृद्ध पोइडिट पहुँच ।"
+msgstr "समृद्ध पोऐडिट पहुँच"
 
 #. Add-on description
 #. Translators: Long description to be shown for this add-on on add-on information from add-ons manager
@@ -205,9 +221,13 @@ msgid ""
 "Also by pressing the specified gestures, you can know the source and "
 "translated message text as well as   toggle the beep mode."
 msgstr ""
-"यह अतिरिक्त-साधन ने पोईडिट कि द्रुत कुञ्जीद्वारा    दिया गया आदेश से हुवा कार्य  कि "
-"जानकारी देता है । इसने विभिन्न साङ्केतिक  आवाज देकर अनुवादीत पाठ कि स्थिति भि जानकारी "
-"देता है । आप निर्दिष्ट आदेश कुञ्जीओं  को दबा कर श्रोत और अनुवाद पाठ मालुम भि कर सकतें है ।"
+"यह अतिरिक्त-साधन पोऐडिट के द्रुत कुञ्जी आदेश को दबाने पर की क्रीया कि घोषणा करता है.\n"
+"यह विशिष्ट बीप द्वारा संदेशों की विभिन्न श्रेणी को इंगित करता है. \n"
+" निर्दिष्ट इशारे दबाकर, आप स्रोत और अनुवादित संदेश पाठ कि जानकारी के अलावा भोपू मुद्रा "
+"को भी उलट सकते है."
+
+#~ msgid "No comment."
+#~ msgstr "कोई टिपनी नही है."
 
 #~ msgid "Could not read the source text"
 #~ msgstr "श्रोत पाठ नहि पढ पाया ।"

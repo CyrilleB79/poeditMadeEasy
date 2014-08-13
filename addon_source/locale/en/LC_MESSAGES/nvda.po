@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 'poeditMadeEasy' '1.0'\n"
 "Report-Msgid-Bugs-To: 'nvda-translations@freelists.org'\n"
-"POT-Creation-Date: 2014-08-02 18:57+0545\n"
-"PO-Revision-Date: 2014-08-02 18:58+0545\n"
+"POT-Creation-Date: 2014-08-13 07:02+0545\n"
+"PO-Revision-Date: 2014-08-13 07:03+0545\n"
 "Last-Translator: \n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: en\n"
@@ -24,169 +24,181 @@ msgstr ""
 msgid "bracket"
 msgstr ""
 
-#: addon\appModules\poedit.py:42
+#: addon\appModules\poedit.py:44
 msgid "ampersand"
 msgstr ""
 
-#: addon\appModules\poedit.py:42
+#: addon\appModules\poedit.py:44
 msgid "paragraph"
 msgstr ""
 
-#. Translators: The copying  of  source text to translation pressing control+b in poedit.
-#: addon\appModules\poedit.py:51
+#. Translators: The copying of source text to translation pressing control+b in poedit.
+#: addon\appModules\poedit.py:53
 msgid "copied original text."
 msgstr ""
 
 #. Translators: The description of an NVDA command of copying message in Poedit.
-#: addon\appModules\poedit.py:53
+#: addon\appModules\poedit.py:55
 msgid "Reports about the copying act in poedit."
 msgstr ""
 
-#. Translators: The deletion  of  translation pressing control+k in poedit.
-#: addon\appModules\poedit.py:59
+#. Translators: The deletion of translation pressing control+k in poedit.
+#: addon\appModules\poedit.py:61
 msgid "translation deleted."
 msgstr ""
 
-#. Translators: Report that No translation  text available to delete.
-#. Translators: The announcement of the source text on pressing ctrl+shift+r.
+#. Translators: Report that No translation text available to delete.
 #. Translators: The announcement of the translated text on pressing ctrl+shift+t.
-#: addon\appModules\poedit.py:62 addon\appModules\poedit.py:75
-#: addon\appModules\poedit.py:90 addon\appModules\poedit.py:101
-#: addon\appModules\poedit.py:110 addon\appModules\poedit.py:132
-#: addon\appModules\poedit.py:284
-msgid "No text."
+#: addon\appModules\poedit.py:64 addon\appModules\poedit.py:95
+#: addon\appModules\poedit.py:109 addon\appModules\poedit.py:118
+#: addon\appModules\poedit.py:140 addon\appModules\poedit.py:308
+msgid "No text in translation."
 msgstr ""
 
 #. Translators: The description of an NVDA command of deletion in Poedit.
-#: addon\appModules\poedit.py:64
+#: addon\appModules\poedit.py:66
 msgid "Reports about the deletion act in poedit."
 msgstr ""
 
-#. Translators: The saving   of  currently focused    po file by   pressing control+s.
-#: addon\appModules\poedit.py:69
+#. Translators: The saving  of currently focused  po file by  pressing control+s.
+#: addon\appModules\poedit.py:71
 msgid "saving the po file..."
 msgstr ""
 
-#. Translators: The description of an NVDA command of saving  po  file.
-#: addon\appModules\poedit.py:71
-msgid "Reports while  saving the po  file."
+#. Translators: The description of an NVDA command of saving po file.
+#: addon\appModules\poedit.py:73
+msgid "Reports while saving the po file."
 msgstr ""
 
-#: addon\appModules\poedit.py:78 addon\appModules\poedit.py:95
-#: addon\appModules\poedit.py:106 addon\appModules\poedit.py:120
-#: addon\appModules\poedit.py:129
+#. Translators: The announcement of the source text on pressing ctrl+shift+r.
+#: addon\appModules\poedit.py:77
+msgid "No source text."
+msgstr ""
+
+#: addon\appModules\poedit.py:80 addon\appModules\poedit.py:103
+#: addon\appModules\poedit.py:114 addon\appModules\poedit.py:128
+#: addon\appModules\poedit.py:137
 msgid "singular"
 msgstr ""
 
-#: addon\appModules\poedit.py:80 addon\appModules\poedit.py:97
-#: addon\appModules\poedit.py:104 addon\appModules\poedit.py:123
-#: addon\appModules\poedit.py:126
+#: addon\appModules\poedit.py:82 addon\appModules\poedit.py:105
+#: addon\appModules\poedit.py:112 addon\appModules\poedit.py:131
+#: addon\appModules\poedit.py:134
 msgid "plural"
 msgstr ""
 
+#: addon\appModules\poedit.py:88 addon\appModules\poedit.py:100
+msgid "Has no plural form."
+msgstr ""
+
 #. Translators: The description of an nvda command for reporting source message in Poedit.
-#: addon\appModules\poedit.py:86
+#: addon\appModules\poedit.py:91
 msgid ""
 "Reports the source text in poedit. In case of plural form of messages, "
 "pressing twice says the plural form of the source text"
 msgstr ""
 
 #. Translators: The description of an nvda command for reporting translation message in Poedit.
-#: addon\appModules\poedit.py:113
+#: addon\appModules\poedit.py:121
 msgid ""
 "Reports the translated string in poedit. In case of plural form of messages, "
-"pressing twice says the another  form of the translated  string"
+"pressing twice says the another form of the translated string"
 msgstr ""
 
-#: addon\appModules\poedit.py:135
-msgid "Warning! {caseType} message has same  text  in source and translation."
-msgstr ""
-
-#: addon\appModules\poedit.py:137
+#: addon\appModules\poedit.py:143
 msgid ""
-"{caseType} message contains   unequal number of {unequalItem} in source and "
+"Warning! {caseType} message contains same text in source and translation."
+msgstr ""
+
+#: addon\appModules\poedit.py:145
+msgid ""
+"{caseType} message has different  number of {unequalItem} in source and "
 "translation."
 msgstr ""
 
-#: addon\appModules\poedit.py:139
-msgid "no error."
+#: addon\appModules\poedit.py:147
+msgid "no syntax error."
 msgstr ""
 
-#: addon\appModules\poedit.py:141
+#: addon\appModules\poedit.py:149
 msgid "Describes the cause of error."
 msgstr ""
 
-#. Translators: reported if     the Note for translator window does not contain any texts.
-#: addon\appModules\poedit.py:158
-msgid "No Note for translator."
+#. Translators: Reported when there exists no note for translators.
+#: addon\appModules\poedit.py:173
+msgid "No notes for translators."
 msgstr ""
 
-#. Translators: reported when  the Note for translator window could not be   found.
-#: addon\appModules\poedit.py:161
-msgid "could not find  the Note for translator window."
+#. Translators: Reported when  unable to find the 'Notes for translators' window.
+#: addon\appModules\poedit.py:176
+msgid "Could not find Notes for translators window."
 msgstr ""
 
 #. Translators: The description of an NVDA command for Poedit.
-#: addon\appModules\poedit.py:164
-msgid "Reports any Note for translator"
+#: addon\appModules\poedit.py:179
+msgid "Reports any notes for translators"
 msgstr ""
 
-#. Translators: reported when the comment window  does not contain any texts.
-#: addon\appModules\poedit.py:170
-msgid "No comment."
+#. Translators: Reported when the comment window does not contain any texts.
+#: addon\appModules\poedit.py:185
+msgid "Comment window has no text."
 msgstr ""
 
-#. Translators: reported when the comments window could not be found.
-#: addon\appModules\poedit.py:173
+#. Translators: Reported when the comments window could not be found.
+#: addon\appModules\poedit.py:188
 msgid "Could not find comment window."
 msgstr ""
 
 #. Translators: The description of an NVDA command for Poedit.
-#: addon\appModules\poedit.py:176
+#: addon\appModules\poedit.py:191
 msgid "Reports any comments in the comments window"
 msgstr ""
 
-#: addon\appModules\poedit.py:182
+#: addon\appModules\poedit.py:197
 msgid "Beep off"
 msgstr ""
 
-#: addon\appModules\poedit.py:185
+#: addon\appModules\poedit.py:200
 msgid "Beep on"
 msgstr ""
 
-#. Translators: An NVDA command for toggling a beep  in Poedit.
-#: addon\appModules\poedit.py:187
+#. Translators: An NVDA command for toggling a beep in Poedit.
+#: addon\appModules\poedit.py:202
 msgid "Toggles the beep mode and informs."
 msgstr ""
 
-#: addon\appModules\poedit.py:193
-msgid "set to  mild tone"
+#: addon\appModules\poedit.py:208
+msgid "set to mild tone"
 msgstr ""
 
-#: addon\appModules\poedit.py:196
-msgid "set to high  tone"
+#: addon\appModules\poedit.py:211
+msgid "set to high tone"
 msgstr ""
 
-#. Translators: An NVDA command for adjusting  a beep  volume.
-#: addon\appModules\poedit.py:198
-msgid "sets the beep volume in mild  and sharp level in poedit."
+#. Translators: An NVDA command for adjusting a beep volume.
+#: addon\appModules\poedit.py:213
+msgid "sets the beep volume in mild and sharp level in poedit."
 msgstr ""
 
-#: addon\appModules\poedit.py:284
+#: addon\appModules\poedit.py:288
+msgid "Has plural form."
+msgstr ""
+
+#: addon\appModules\poedit.py:308
 msgid "erased Fuzzy label."
 msgstr ""
 
-#: addon\appModules\poedit.py:284
+#: addon\appModules\poedit.py:308
 msgid "labelled as fuzzy."
 msgstr ""
 
-#: addon\appModules\poedit.py:284
+#: addon\appModules\poedit.py:308
 msgid "Error in translation"
 msgstr ""
 
 #. Translators: The description of an NVDA command in toggling Poedit message status.
-#: addon\appModules\poedit.py:289
-msgid "Reports the status  of message set by toggling in poedit."
+#: addon\appModules\poedit.py:313
+msgid "Reports the status of message set by toggling in poedit."
 msgstr ""
 
 #. Add-on summary, usually the user visible name of the addon.
